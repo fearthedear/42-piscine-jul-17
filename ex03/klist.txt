@@ -1,0 +1,5 @@
+Credentials cache: API:6D2F7214-9519-4375-AD7B-E0A23ED228F7
+        Principal: lkinzel@42.FR
+
+  Issued                Expires               Principal
+Jul  3 16:07:48 2017  Jul 10 16:06:59 2017  krbtgt/42.FR@42.FR
