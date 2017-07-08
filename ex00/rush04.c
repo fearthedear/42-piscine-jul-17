@@ -6,14 +6,14 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 11:09:08 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/08 12:38:53 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/08 12:51:32 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	ft_assignchars(int x, int y, int row, char *s, char *m, char *e)
-{	
+void	ft_assignchars(int y, int row, char *s, char *m, char *e)
+{
 	if (row == 0)
 	{
 		*s = 'A';
@@ -34,7 +34,7 @@ void	ft_assignchars(int x, int y, int row, char *s, char *m, char *e)
 	}
 }
 
-void	ft_putsingle(int x, int y, int row, char s, char m, char e)
+void	ft_putsingle(int x, char s)
 {
 	if (x == 1)
 		ft_putchar(s);
@@ -43,14 +43,13 @@ void	ft_putsingle(int x, int y, int row, char s, char m, char e)
 
 void	ft_putrow(int x, int y, int row)
 {
-	int a;
-	char s;
-	char m;
-	char e;
+	int		a;
+	char	s;
+	char	m;
+	char	e;
 
-	ft_assignchars(x, y, row, &s, &m, &e);
-	a = x-2;
-
+	ft_assignchars(y, row, &s, &m, &e);
+	a = x - 2;
 	if (x > 1)
 	{
 		ft_putchar(s);
@@ -63,11 +62,11 @@ void	ft_putrow(int x, int y, int row)
 		ft_putchar('\n');
 	}
 	else
-		ft_putsingle(x, y, row, s, m, e);
+		ft_putsingle(x, s);
 }
 
 void	rush(int x, int y)
-{	
+{
 	int a;
 
 	a = 0;
