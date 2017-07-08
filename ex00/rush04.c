@@ -6,13 +6,15 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 11:09:08 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/08 12:51:32 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/08 15:37:13 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	ft_assignchars(int y, int row, char *s, char *m, char *e)
+int g_y = 0;
+
+void	ft_assignchar(int row, char *s, char *m, char *e)
 {
 	if (row == 0)
 	{
@@ -20,7 +22,7 @@ void	ft_assignchars(int y, int row, char *s, char *m, char *e)
 		*m = 'B';
 		*e = 'C';
 	}
-	else if (row < y - 1)
+	else if (row < g_y - 1)
 	{
 		*s = 'B';
 		*m = ' ';
@@ -41,14 +43,14 @@ void	ft_putsingle(int x, char s)
 	ft_putchar('\n');
 }
 
-void	ft_putrow(int x, int y, int row)
+void	ft_putrow(int x, int row)
 {
 	int		a;
 	char	s;
 	char	m;
 	char	e;
 
-	ft_assignchars(y, row, &s, &m, &e);
+	ft_assignchar(row, &s, &m, &e);
 	a = x - 2;
 	if (x > 1)
 	{
@@ -69,12 +71,13 @@ void	rush(int x, int y)
 {
 	int a;
 
+	g_y = y;
 	a = 0;
-	if (x > 0 && y > 0)
+	if (x > 0 && g_y > 0)
 	{
-		while (a < y)
+		while (a < g_y)
 		{
-			ft_putrow(x, y, a);
+			ft_putrow(x, a);
 			a++;
 		}
 	}
