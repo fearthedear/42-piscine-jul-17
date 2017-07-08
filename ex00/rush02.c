@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 11:09:08 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/08 16:03:12 by dolivier         ###   ########.fr       */
+/*   Updated: 2017/07/08 19:28:35 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,35 +36,31 @@ void	ft_assignchar(int row, char *s, char *m, char *e)
 	}
 }
 
-void	ft_putsingle(int x, char s)
-{
-	if (x == 1)
-		ft_putchar(s);
-	ft_putchar('\n');
-}
-
 void	ft_putrow(int x, int row)
 {
-	int		a;
+	int		middle_characters;
 	char	s;
 	char	m;
 	char	e;
 
 	ft_assignchar(row, &s, &m, &e);
-	a = x - 2;
+	middle_characters = x - 2;
 	if (x > 1)
 	{
 		ft_putchar(s);
-		while (a > 0)
+		while (middle_characters > 0)
 		{
 			ft_putchar(m);
-			a--;
+			middle_characters--;
 		}
 		ft_putchar(e);
 		ft_putchar('\n');
 	}
 	else
-		ft_putsingle(x, s);
+	{
+		ft_putchar(s);
+		ft_putchar('\n');
+	}
 }
 
 void	rush(int x, int y)
