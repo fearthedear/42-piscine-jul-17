@@ -6,16 +6,14 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 11:08:32 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/08 11:54:04 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/08 12:41:19 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//#include "rush04.c"
 
 void	rush(int x, int y);
 
 int		main()
 {
-	rush(12,4);
+	rush(1, 1);
 	return (0);
 }
