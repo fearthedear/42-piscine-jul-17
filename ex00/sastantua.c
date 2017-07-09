@@ -6,7 +6,7 @@
 /*   By: lkinzel <lkinzel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:18:31 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/09 23:42:02 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/09 23:50:16 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,30 @@ void	ft_putchar(char c);
 
 int		ft_r_w(int n, int row)
 {
-	int row_width;
-	int add;
+	int data[4];
 	int step;
-	int step_init;
 	int c;
-	int added;
 
 	c = 1;
-	added = 0;
-	row_width = 3 + (row - 1) * 2;
-	add = 4;
+	data[1] = 0;
+	data[0] = 3 + (row - 1) * 2;
+	data[3] = 4;
 	step = 3;
-	step_init = 3;
+	data[2] = 3;
 	while (c <= row)
 	{
 		if (c == step + 1)
 		{
-			if (added != 0 && added % 2 == 0)
-				add += 2;
-			row_width += add;
-			step += step_init + 1;
-			step_init++;
-			added++;
+			if (data[1] != 0 && data[1] % 2 == 0)
+				data[3] += 2;
+			data[0] += data[3];
+			step += data[2] + 1;
+			data[2]++;
+			data[1]++;
 		}
 		c++;
 	}
-	return (row_width);
+	return (data[0]);
 }
 
 void	with_doorknob(int o, int door_width, int cr)
@@ -84,23 +81,21 @@ void	row_with_door(int n, int cr, int o)
 	}
 }
 
-void	ft_print(int cr, int spaces, int o, int n)
+void	ft_print(int cr, int spaces[], int o, int n)
 {
-	int init_spaces;
-
-	init_spaces = ft_r_w(n, g_rows) - ft_r_w(n, g_rows) / 2;
+	spaces[0] = ft_r_w(n, g_rows) - ft_r_w(n, g_rows) / 2;
 	while (cr <= g_rows)
 	{
 		o = 0;
-		spaces = init_spaces - ((ft_r_w(n, cr) - ft_r_w(n, 1)) / 2) - 1;
-		while (o < spaces)
+		spaces[1] = spaces[0] - ((ft_r_w(n, cr) - ft_r_w(n, 1)) / 2) - 1;
+		while (o < spaces[1])
 		{
 			ft_putchar(' ');
 			o++;
 		}
 		ft_putchar('/');
 		o = 0;
-		if (cr == g_rows || spaces < g_n_uneven)
+		if (cr == g_rows || spaces[1] < g_n_uneven)
 			row_with_door(n, cr, 0);
 		else
 			while (o < ft_r_w(n, cr) - 2)
@@ -116,6 +111,8 @@ void	ft_print(int cr, int spaces, int o, int n)
 
 void	sastantua(int n)
 {
+	int spaces[2];
+
 	g_n = n;
 	if (g_n == 0)
 		return ;
@@ -130,5 +127,5 @@ void	sastantua(int n)
 		g_rows += n;
 		n++;
 	}
-	ft_print(1, 0, 0, g_n);
+	ft_print(1, spaces, 0, g_n);
 }
