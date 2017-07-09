@@ -6,7 +6,7 @@
 /*   By: lkinzel <lkinzel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:18:31 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/09 23:50:16 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/10 00:26:31 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int g_n_uneven = 0;
 
 void	ft_putchar(char c);
 
-int		ft_r_w(int n, int row)
+int		ft_r_w(int row)
 {
 	int data[4];
 	int step;
@@ -59,7 +59,7 @@ void	row_with_door(int n, int cr, int o)
 	door_width = n;
 	if (door_width % 2 == 0)
 		door_width--;
-	while (o < ((ft_r_w(n, cr) - 2 - door_width) / 2))
+	while (o < ((ft_r_w(cr) - 2 - door_width) / 2))
 	{
 		ft_putchar('*');
 		o++;
@@ -74,7 +74,7 @@ void	row_with_door(int n, int cr, int o)
 		o++;
 	}
 	o = 0;
-	while (o < ((ft_r_w(n, cr) - 2 - door_width) / 2))
+	while (o < ((ft_r_w(cr) - 2 - door_width) / 2))
 	{
 		ft_putchar('*');
 		o++;
@@ -83,11 +83,11 @@ void	row_with_door(int n, int cr, int o)
 
 void	ft_print(int cr, int spaces[], int o, int n)
 {
-	spaces[0] = ft_r_w(n, g_rows) - ft_r_w(n, g_rows) / 2;
+	spaces[0] = ft_r_w(g_rows) - ft_r_w(g_rows) / 2;
 	while (cr <= g_rows)
 	{
 		o = 0;
-		spaces[1] = spaces[0] - ((ft_r_w(n, cr) - ft_r_w(n, 1)) / 2) - 1;
+		spaces[1] = spaces[0] - ((ft_r_w(cr) - ft_r_w(1)) / 2) - 1;
 		while (o < spaces[1])
 		{
 			ft_putchar(' ');
@@ -98,7 +98,7 @@ void	ft_print(int cr, int spaces[], int o, int n)
 		if (cr == g_rows || spaces[1] < g_n_uneven)
 			row_with_door(n, cr, 0);
 		else
-			while (o < ft_r_w(n, cr) - 2)
+			while (o < ft_r_w(cr) - 2)
 			{
 				ft_putchar('*');
 				o++;
