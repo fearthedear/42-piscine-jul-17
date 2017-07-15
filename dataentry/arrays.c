@@ -6,28 +6,28 @@
 /*   By: amordret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/15 17:36:36 by amordret          #+#    #+#             */
-/*   Updated: 2017/07/15 18:09:48 by amordret         ###   ########.fr       */
+/*   Updated: 2017/07/15 18:46:37 by amordret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_data_entry(char **av)
+void	ft_error();
+
+void	ft_data_entry(char **av)
 {
 	int x;
 	int y;
 	int array [9][9];
 
-
-	while (y < 8 && x < 8)
+	x = 0;
+	y = 0;
+	while (y < 9 && x < 9)
 	{
-		if (av[y][x] < 58 && av[y + 1][x] > 48)
+		if (av[y + 1][x] < 58 && av[y + 1][x] > 48)
 			array[x][y] = av[y + 1][x] - 48;
 		if (av[y + 1][x] == 46)
 			array[x][y] = 0;
-		else
-		{
-			ft_error();
-			return(0);
-		}
+		if((av[y + 1][x] < 49 || av[y + 1][x] > 57) && (av[y + 1][x] != 46))
+			return (ft_error());
 		if (x == 8)
 		{
 			x = 0;
@@ -35,5 +35,5 @@ int		ft_data_entry(char **av)
 		}
 		else
 			x++;
-	}
+		}
 }
