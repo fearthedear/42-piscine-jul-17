@@ -6,74 +6,97 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/15 19:23:27 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/15 22:56:03 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/16 11:23:22 by amordret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		valid(int i, int j, int value, int arr[][9])
+int	valid_row(int y, int value, int arr[][9])
 {
-	// row
-	int k = 0;
+	int x;
 
-	while(k < 9)
+	x = 0;
+	while (x < 9)
 	{
-		if (value == arr[k][j])
+		if (value == arr[x][y])
 			return (0);
-		k++;
+		x++;
 	}
-
-	// col
-	k = 0;
-	while (k < 9)
-	{
-		if (value == arr[i][k])
-			return (0);
-		k++;
-	}
-
-	// box
-	int boxrowoffset = (i / 3) * 3;
-	int boxcoloffset = (j / 3) * 3;
-	k = 0;
-	int m = 0;
-	while (k < 3)
-	{
-		while (m < 3)
-		{
-			if (value == arr[boxrowoffset+k][boxcoloffset+m])
-				return (0);
-			m++;
-		}
-		k++;
-	}	
 	return (1);
 }
 
-int		solve(int i, int j, int arr[][9])
+int	valid_col(int x, int value, int arr[][9])
 {
-	if (i == 9)
+	int y;
+
+	y = 0;
+	while (y < 9)
 	{
-		if (i == 9)
-			i = 0;
-		if (j++ == 9)
+		if (value == arr[x][y])
+			return (0);
+		y++;
+	}
+	return (1);
+}
+
+int	valid_box(int x, int y, int value, int arr[][9])
+{
+	int boxrowoffset;
+	int boxcoloffset;
+	int i;
+	int j;
+
+	boxrowoffset = (x / 3) * 3;
+	boxcoloffset = (y / 3) * 3;
+	i = 0;
+	j = 0;
+	while (i < 3)
+	{
+		while (j < 3)
+		{
+			if (value == arr[boxrowoffset + i][boxcoloffset + j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	valid(int i, int j, int value, int arr[][9])
+{
+	if (valid_row(j, value, arr) == 0)
+		return (0);
+	if (valid_col(i, value, arr) == 0)
+		return (0);
+	if (valid_box(i, j, value, arr) == 0)
+		return (0);
+	return (1);
+}
+
+int	solve(int x, int y, int arr[][9])
+{
+	int value;
+
+	value = 1;
+	if (x == 9)
+	{
+		if (x == 9)
+			x = 0;
+		if (y++ == 9)
 			return (1);
 	}
-	if (arr[i][j] != 0) //skip filled cells
-		return (solve(i+1, j, arr));
-
-	int value = 1;
+	if (arr[x][y] != 0)
+		return (solve(x + 1, y, arr));
 	while (value <= 9)
 	{
-		if (valid(i, j, value, arr))
+		if (valid(x, y, value, arr))
 		{
-			arr[i][j] = value;
-			if (solve(i+1, j, arr))
+			arr[x][y] = value;
+			if (solve(x + 1, y, arr))
 				return (1);
 		}
 		value++;
 	}
-	arr[i][j] = 0; //reset the backtrack
+	arr[x][y] = 0;
 	return (0);
 }
-
-

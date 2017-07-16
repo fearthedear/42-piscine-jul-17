@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/15 22:44:45 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/15 22:59:51 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/16 11:24:34 by amordret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	printoutput(int array[][9])
 {
-	int i;
-	int m;
-	char c;
-	char o;
-	char n;
+	int		x;
+	int		y;
+	char	c;
+	char	o;
+	char	n;
 
 	n = 10;
 	c = 32;
-	i = 0;
-	while (i < 9)
-	{	
-		m = 0;
-		while (m < 9)
+	x = 0;
+	while (x < 9)
+	{
+		y = 0;
+		while (y < 9)
 		{
-			o = array[i][m] + 48;
+			o = array[x][y] + 48;
 			write(1, &o, 1);
 			write(1, &c, 1);
-			m++;
-		}	
+			y++;
+		}
 		write(1, &n, 1);
-		i++;
+		x++;
 	}
 }
