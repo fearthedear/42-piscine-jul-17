@@ -30,7 +30,8 @@ void	printoutput(int array[][9])
 		{
 			o = array[x][y] + 48;
 			write(1, &o, 1);
-			write(1, &c, 1);
+			if (y != 8)
+				write(1, &c, 1);
 			y++;
 		}
 		write(1, &n, 1);
