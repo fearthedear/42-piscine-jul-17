@@ -6,7 +6,7 @@
 /*   By: amordret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/15 17:36:36 by amordret          #+#    #+#             */
-/*   Updated: 2017/07/16 11:26:49 by amordret         ###   ########.fr       */
+/*   Updated: 2017/07/16 13:57:16 by amordret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,31 @@ int	ft_check_data_entry(int array[][9])
 		x++;
 	}
 	return (1);
+}
+
+int	ft_check_only_one_sol(int array[][9])
+{
+	int x;
+	int y;
+	int fixed_nums;
+
+	x = 0;
+	y = 0;
+	fixed_nums = 0;
+	while (y < 9)
+	{
+		x = 0;
+		while (x < 9)
+		{
+			if (array[x][y] != 0)
+				fixed_nums++;
+			x++;
+		}
+		y++;
+	}
+	if (fixed_nums > 16)
+		return (1);
+	return (ft_error());
 }
 
 int	ft_data_entry(char **av, int array[][9])
