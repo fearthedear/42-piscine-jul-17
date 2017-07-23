@@ -2,6 +2,8 @@
 // Created by Linus KINZEL on 7/23/17.
 //
 
+#include "header.h"
+
 int     is_number(char c)
 {
     if (c > 47 && c < 58)
@@ -18,50 +20,83 @@ int     is_operator(char c)
         return (0);
 }
 
-int     add_to_queue(char c)
-{
-    g_queue[ft_strlen - 1] = c;
-    g_queue[ft_strlen] = '\0';
-}
-
 int     get_precedence(char c)
 {
-    if (c == '*' || c == "/" || c == '%')
+    if (c == '*' || c == '/' || c == '%')
         return (2);
     else
         return (1);
 }
 
-char    *g_queue;
+char *getnextelement(char *str)
+{
+    int i;
+    int j;
+    char *num;
+
+    i = 0;
+    if (is_number(str[i]))
+    {
+        j = i + 1;
+        while (is_number(str[j]))
+            j++;
+        num = (char*)malloc(sizeof(char) * (j + 1));
+        return (ft_strncpy(num, str, (unsigned int)(j)));
+    }
+    else
+        return (str);
+}
+
+void printArray_(char **a, int len) {
+    for (int i = 0; i < len; i++) {
+        printf("%s", a[i]);
+        printf("%c", ' ');
+    }
+}
 
 char    *shunting_yard(char *str)
 {
     int     i;
+    char    *nextelement;
 
+    nextelement = (char*)malloc(sizeof(char) * 50);
     i = 0;
-    g_queue = (char*)malloc(sizeof(char) * ft_strlen(str) + 1); // check if it's enough to allocate for length of normal notation string
-    while (str[i] != '\0')
+    while (*str != '\0')
     {
-        if (is_number(str[i]))
-            add_to_queue(str[i]);
-        else if (isoperator(str[i]))
+        while (str[0] == ' ')
+            str++;
+        nextelement = getnextelement(str);
+        printf("Element is: %s\n", nextelement);
+        if (is_number(nextelement[0]))
         {
-            while (get_precedence(opstack.stk[opstack.top]) >= get_precedence(str[i]))
-                add_to_queue(pop());
-            push(str[i]);
+            queue_insert(nextelement);
+            while (is_number(str[0]) && (str[1] != '\0'))
+                str++;
         }
-        else if (str[i] == '(')
-            opstack.push(str[i]);
-        else if (str[i] == ')')
+        else if (is_operator(nextelement[0]))
+        {
+            while ((opstack.top != -1) &&
+                    (get_precedence(opstack.stk[opstack.top]) >= get_precedence(nextelement[0]))
+                    && (opstack.stk[opstack.top] != '('))
+                queue_insert(pop());
+            push(nextelement[0]);
+        }
+        else if (nextelement[0] == '(')
+            push(nextelement[0]);
+        else if (nextelement[0] == ')')
         {
             while (opstack.stk[opstack.top] != '(')
-                add_to_queue(pop());
+                queue_insert(pop());
             pop();
         }
-        i++;
+        str++;
     }
     while (opstack.top != -1)
-        add_to_queue(pop());
+        if (opstack.stk[opstack.top] == '(')
+            pop();
+        else
+            queue_insert(pop());
 
-    return (g_queue);
+    printArray_(queue_array, 9);
+    return ("done");
 }

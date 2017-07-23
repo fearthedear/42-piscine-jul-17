@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/23 12:38:42 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/23 12:55:23 by lkinzel          ###   ########.fr       */
+/*   Created: 2017/07/11 23:17:43 by lkinzel           #+#    #+#             */
+/*   Updated: 2017/07/17 13:53:16 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int eval_expr(char *str)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	char *sy;
-	int result;
+	unsigned int	i;
+	int				con;
 
-	result = 0;
-	//set up stack
-	opstack.top = -1;
-
-	sy = shunting_yard(str);
-	//printf("%s", sy);
-	//result = read_rpn(sy);
-	return (result);
-}
-
-int main(int ac, char **av)
-{
-	if (ac > 1) {
-		eval_expr(av[1]);
-		//printf("%s", eval_expr(av[1]));
-		//ft_putnbr(eval_expr(av[1]));
-		ft_putchar('\n');
+	i = 0;
+	con = 1;
+	while (con)
+	{
+		if (src[i] == '\0' || i == n - 1)
+		{
+			con = 0;
+			if (i < n - 1)
+				dest[i + 1] = '\0';
+		}
+		dest[i] = src[i];
+		i++;
 	}
-	return (0);
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
