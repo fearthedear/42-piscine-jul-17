@@ -6,33 +6,29 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/23 12:38:42 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/23 12:55:23 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/23 23:02:14 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int eval_expr(char *str)
+int	eval_expr(char *str)
 {
-	char *sy;
 	int result;
 
 	result = 0;
-	//set up stack
-	opstack.top = -1;
-
-	sy = shunting_yard(str);
-	//printf("%s", sy);
-	//result = read_rpn(sy);
+	g_opstack.top = -1;
+	g_rstack.top = -1;
+	shunting_yard(str);
+	result = calc_result(g_queue_array);
 	return (result);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	if (ac > 1) {
-		eval_expr(av[1]);
-		//printf("%s", eval_expr(av[1]));
-		//ft_putnbr(eval_expr(av[1]));
+	if (ac > 1)
+	{
+		ft_putnbr(eval_expr(av[1]));
 		ft_putchar('\n');
 	}
 	return (0);

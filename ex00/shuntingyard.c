@@ -1,102 +1,78 @@
-//
-// Created by Linus KINZEL on 7/23/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   shuntingyard.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/23 23:04:27 by lkinzel           #+#    #+#             */
+/*   Updated: 2017/07/23 23:39:02 by lkinzel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "header.h"
 
-int     is_number(char c)
+void	clearremainder(void)
 {
-    if (c > 47 && c < 58)
-        return (1);
-    else
-        return (0);
+	while (g_opstack.top != -1)
+		if (g_opstack.stk[g_opstack.top] == '(')
+			pop();
+		else
+			queue_insert(pop());
+	queue_insert("e");
 }
 
-int     is_operator(char c)
+int		precedencechecker(char *nextelement)
 {
-    if (c == '%' || c == '+' || c == '-' || c == '*' || c == '/')
-        return (1);
-    else
-        return (0);
+	if ((g_opstack.top != -1) &&
+			(get_precedence(g_opstack.stk[g_opstack.top])
+			>= get_precedence(nextelement[0]))
+			&& (g_opstack.stk[g_opstack.top] != '('))
+		return (1);
+	else
+		return (0);
 }
 
-int     get_precedence(char c)
+void	handleoperators(char *nextelement)
 {
-    if (c == '*' || c == '/' || c == '%')
-        return (2);
-    else
-        return (1);
+	if (is_operator(nextelement[0]))
+	{
+		while (precedencechecker(nextelement))
+			queue_insert(pop());
+		push(nextelement[0]);
+	}
+	else if (nextelement[0] == '(')
+		push(nextelement[0]);
+	else if (nextelement[0] == ')')
+	{
+		while (g_opstack.stk[g_opstack.top] != '(')
+			queue_insert(pop());
+		pop();
+	}
 }
 
-char *getnextelement(char *str)
+void	*shunting_yard(char *str)
 {
-    int i;
-    int j;
-    char *num;
+	int		i;
+	char	*nextelement;
 
-    i = 0;
-    if (is_number(str[i]))
-    {
-        j = i + 1;
-        while (is_number(str[j]))
-            j++;
-        num = (char*)malloc(sizeof(char) * (j + 1));
-        return (ft_strncpy(num, str, (unsigned int)(j)));
-    }
-    else
-        return (str);
-}
-
-void printArray_(char **a, int len) {
-    for (int i = 0; i < len; i++) {
-        printf("%s", a[i]);
-        printf("%c", ' ');
-    }
-}
-
-char    *shunting_yard(char *str)
-{
-    int     i;
-    char    *nextelement;
-
-    nextelement = (char*)malloc(sizeof(char) * 50);
-    i = 0;
-    while (*str != '\0')
-    {
-        while (str[0] == ' ')
-            str++;
-        nextelement = getnextelement(str);
-        printf("Element is: %s\n", nextelement);
-        if (is_number(nextelement[0]))
-        {
-            queue_insert(nextelement);
-            while (is_number(str[0]) && (str[1] != '\0'))
-                str++;
-        }
-        else if (is_operator(nextelement[0]))
-        {
-            while ((opstack.top != -1) &&
-                    (get_precedence(opstack.stk[opstack.top]) >= get_precedence(nextelement[0]))
-                    && (opstack.stk[opstack.top] != '('))
-                queue_insert(pop());
-            push(nextelement[0]);
-        }
-        else if (nextelement[0] == '(')
-            push(nextelement[0]);
-        else if (nextelement[0] == ')')
-        {
-            while (opstack.stk[opstack.top] != '(')
-                queue_insert(pop());
-            pop();
-        }
-        str++;
-    }
-    while (opstack.top != -1)
-        if (opstack.stk[opstack.top] == '(')
-            pop();
-        else
-            queue_insert(pop());
-
-    printArray_(queue_array, 9);
-    return ("done");
+	nextelement = (char*)malloc(sizeof(char) * 50);
+	i = 0;
+	while (*str != '\0')
+	{
+		while (str[0] == ' ')
+			str++;
+		nextelement = getnextelement(str);
+		if (is_number(nextelement[0]) || (str[0] == '-' && is_number(str[1])))
+		{
+			queue_insert(nextelement);
+			while (is_number(str[1]) && (str[1] != '\0'))
+				str++;
+		}
+		else
+			handleoperators(nextelement);
+		str++;
+	}
+	clearremainder();
+	return (0);
 }

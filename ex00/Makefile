@@ -1,19 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/07/23 23:32:23 by lkinzel           #+#    #+#              #
+#    Updated: 2017/07/23 23:38:59 by lkinzel          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
+NAME = eval_expr
 
-NAME = evalexpr
-SRC = ./libft.a ./main.c ./shuntingyard.c ./stack.c
-HEADER = ./includes/
 FLAGS = -Werror -Wall -Wextra
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -I=$(HEADER) -o $(NAME) $(SRC)
+	gcc $(FLAGS) -I header.h -o eval_expr  shuntingyard.c stack.c ft_atoi.c ft_putchar.c ft_strlen.c queue.c ft_strncpy.c calcresult.c ft_putnbr.c main.c helpers.c
 
-clean:
-	@find . -name ".DS_Store" -delete
-
-fclean: clean:
-    /bin/rm -f $(NAME)
-
-re: fclean all
+re: all

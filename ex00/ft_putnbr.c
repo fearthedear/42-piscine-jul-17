@@ -1,49 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calcresult.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/23 22:43:48 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/23 22:46:11 by lkinzel          ###   ########.fr       */
+/*   Created: 2017/07/06 12:43:24 by lkinzel           #+#    #+#             */
+/*   Updated: 2017/07/06 23:49:08 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		do_operation(int x, int y, char op)
-{
-	if (op == '+')
-		return (x + y);
-	if (op == '-')
-		return (x - y);
-	if (op == '*')
-		return (x * y);
-	if (op == '/')
-		return (x / y);
-	else
-		return (x % y);
-}
+void	ft_putchar(char c);
 
-int		calc_result(char **arr)
+void	ft_printnbr(int x[])
 {
 	int i;
-	int x;
-	int y;
+	int b;
 
 	i = 0;
-	while (arr[i][0] != 'e')
+	b = 0;
+	while (i < 5)
 	{
-		if (is_number(arr[i][0]))
-			rpush(ft_atoi(arr[i]));
-		if (is_operator(arr[i][0]))
+		if (b == 1)
 		{
-			x = rpop();
-			y = rpop();
-			rpush(do_operation(y, x, arr[i][0]));
+			ft_putchar(x[i] + 48);
+		}
+		else
+		{
+			if (x[i] > 0)
+			{
+				b = 1;
+				ft_putchar(x[i] + 48);
+			}
 		}
 		i++;
 	}
-	return (g_rstack.stk[0]);
+}
+
+void	ft_putnbr(int nb)
+{
+	int o;
+	int t;
+	int x[5];
+
+	if (nb == 0)
+	{
+		ft_putchar('0');
+		return ;
+	}
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = nb + -2 * nb;
+	}
+	t = 4;
+	while (t >= 0)
+	{
+		o = nb % 10;
+		x[t] = o;
+		nb /= 10;
+		t--;
+	}
+	ft_printnbr(x);
 }

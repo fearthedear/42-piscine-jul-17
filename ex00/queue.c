@@ -1,23 +1,24 @@
-//
-// Created by Linus KINZEL on 7/23/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   queue.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/23 23:02:29 by lkinzel           #+#    #+#             */
+/*   Updated: 2017/07/23 23:04:01 by lkinzel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "header.h"
 
-int rear = - 1;
-int front = - 1;
+int g_rear = -1;
+int g_front = -1;
 
-void    queue_insert(char *n)
+void	queue_insert(char *n)
 {
-    if (rear == 9999 - 1)
-        printf("Queue Overflow \n");
-    else
-    {
-        if (front == - 1)
-            /*If queue is initially empty */
-            front = 0;
-        rear = rear + 1;
-        queue_array[rear] = n;
-        printf("insterted into queue: %s\n", n);
-    }
+	if (g_front == -1)
+		g_front = 0;
+	g_rear = g_rear + 1;
+	g_queue_array[g_rear] = n;
 }
