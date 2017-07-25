@@ -6,11 +6,11 @@
 /*   By: jboniwel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:58:54 by jboniwel          #+#    #+#             */
-/*   Updated: 2017/07/25 12:10:54 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/25 12:20:57 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "bsq.h"
 
 int		array_is_valid(char **tab)
 {
