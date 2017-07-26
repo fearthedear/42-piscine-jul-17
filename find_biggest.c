@@ -55,7 +55,7 @@ int 	brute_force_valid(int **arr, int startingpos[2], int size)
 void 	checkfirstrow(int **arr)
 {
     int con;
-    int foundfirst = 0; //foundfirst is 0 in beginning, because first I overwrite if one found with same size, but then only if bigger
+    int foundfirst = 0;
 	int	startingpos[2] = { 0, 0 };
 	while (startingpos[1] + g_dim < g_length)
 	{
@@ -74,6 +74,37 @@ void 	checkfirstrow(int **arr)
 		startingpos[1]++;
 	}
 }
+
+void    checkfirstcol(int **arr)
+{
+    int con;
+    int onthisrow;
+    int startingpos[2] = { 1, 0 };
+    int foundfirst = 0;
+
+    while (startingpos[0] + g_dim < g_length)
+    {
+        con = 1;
+        while (con)
+        {
+            if ((g_pos[0] == startingpos[0]) && (!foundfirst))
+                onthisrow = 0;
+            else
+                onthisrow = 1;
+            if (brute_force_valid(arr, startingpos, g_dim + onthisrow))
+            {
+                if (onthisrow)
+                    g_dim++;
+                g_pos[0] = startingpos[0];
+                g_pos[1] = startingpos[1];
+                foundfirst = 1;
+            } else
+                con = 0;
+        }
+        startingpos[0]++;
+    }
+}
+
 
 void	find_biggest(int **arr, char *str_no_information)
 {
@@ -105,6 +136,7 @@ void	find_biggest(int **arr, char *str_no_information)
 
     make_it_numbers(&tab, str_no_information, g_height, 0);
 	checkfirstrow(tab);
+    checkfirstcol(tab);
 
     printf("g_pos: %d, %d\n", g_pos[0], g_pos[1]);
     printf("g_dim: %d\n", g_dim);
