@@ -22,31 +22,45 @@ int	main(int argc, char **argv)
 	char 	*finalstring;
 	int		ret;
 	int 	**tab;
+    ptr     head;
+    int     n;
+    char    ch;
 
 	i = 1;
 
 	if (argc == 1)
 	{
-		//todo: read from stdin
+        head = NULL;
+        n = 0;
+        while(read(0, &ch, 1) > 0)
+        {
+            insert(&head, ch);
+            n++;
+        }
+        str = (char*)malloc(sizeof(char) * (n + 1));
+        fill_str(head, str);
+        ft_putstr(str);
 	}
 	while (i < argc)
 	{
-		str = (char*)malloc(sizeof(char) * 5000);
-		//reset string here
+        n = 0;
+        head = NULL;
 		fd = open(argv[i], O_RDONLY);
 		if (fd == -1)
 			ft_putstr("opening file failed\n");//display error, open failed
 		//read file
 		while ((ret = read(fd, buf, BUF_SIZE)))
 		{
-			buf[ret] = '\0';
-			str = ft_strcat(str, buf);
+            insert(&head, buf[0]);
+            n++;
 		}
+        str = (char*)malloc(sizeof(char) * (n + 1));
+        fill_str(head, str);
+        freelist(&head);
         ft_putstr("input map is this:\n");
         ft_putstr(str);
         str_no_information = (char*)malloc(sizeof(char) * ft_strlen(str));
         str_no_information = get_information(str);
-		str[0] = '\0';
         if (ft_strcmp(str_no_information, "error") != 0)
         {
             make_it_numbers(&tab, str_no_information, g_height, 1);
@@ -57,9 +71,9 @@ int	main(int argc, char **argv)
             ft_putstr(finalstring);
 			free(tab);
         }
-//		free(str_no_information);
+        free(str);
         if (close(fd) == -1)
-            ft_putstr("closing failed\n");//close failed
+            ft_putstr("closing failed\n");
 		i++;
 	}
 	return (0);

@@ -19,7 +19,24 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BUF_SIZE 10
+# define BUF_SIZE 1
+
+typedef struct	s_node *ptr;
+
+typedef struct	s_node
+{
+    char	val;
+    ptr		next;
+}				t_node;
+
+int		g_height;
+int		g_length;
+char	g_empty;
+char	g_obstacle;
+char	g_square;
+int     g_dim;
+int     g_pos[2];
+int     g_strlength;
 
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
@@ -35,15 +52,11 @@ char    *ft_strcharcat(char *s1, char s2);
 char    *transform_to_string(int **tab, int pos[2], int size);
 int     ft_strlen(char *str);
 int     ft_strcmp(char *s1, char *s2);
+void	insert(ptr *head, char c);
+void    fill_str(ptr head, char *str);
+void    freelist(ptr *head);
 
-int		g_height;
-int		g_length;
-char	g_empty;
-char	g_obstacle;
-char	g_square;
-int     g_dim;
-int     g_pos[2];
-int     g_strlength;
+
 
 typedef struct  s_list
 {
