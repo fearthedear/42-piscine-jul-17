@@ -23,10 +23,12 @@ int		is_valid(int **arr, int startingpos[2], int size)
 		return (1);
 }
 
+void    check
 void	find_biggest(int **arr)
 {
 	show(arr, 0,0);
-	int	startingpos[2] = { 0, 0 };
+	int	startingpos[2] = { 1, 1 };
+    checklargestsquareoutermost();
 	g_pos[0] = 0;
 	g_pos[1] = 0;
 	g_dim = 1;
@@ -46,5 +48,6 @@ void	find_biggest(int **arr)
 		startingpos[0]++;
 	}
 	g_dim--;
-    printf("%d\n", g_dim);
+    printf("g_pos: %d, %d\n", g_pos[0], g_pos[1]);
+    printf("g_dim: %d\n", g_dim);
 }
