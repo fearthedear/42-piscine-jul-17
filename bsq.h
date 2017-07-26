@@ -55,7 +55,8 @@ int     ft_strcmp(char *s1, char *s2);
 void	insert(ptr *head, char c);
 void    fill_str(ptr head, char *str);
 void    freelist(ptr *head);
-
+int		is_valid(int **arr, int startingpos[2], int size);
+int		brute_force_valid(int **arr, int startingpos[2], int size);
 
 
 typedef struct  s_list

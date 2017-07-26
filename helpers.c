@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 23:01:21 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 23:03:00 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/26 23:03:25 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,47 @@ void	freelist(ptr *head)
 		*head = (*head)->next;
 		free(tmp);
 	}
+}
+
+int		is_valid(int **arr, int startingpos[2], int size)
+{
+	size--;
+	if ((startingpos[0] + size >= g_height) ||
+			(startingpos[1] + size >= g_length))
+		return (0);
+	if ((arr[startingpos[0] + size][startingpos[1] + size]
+				- arr[startingpos[0] + size][startingpos[1] - 1]
+				- arr[startingpos[0] - 1][startingpos[1] + size]
+				+ arr[startingpos[0] - 1][startingpos[1] - 1]) > 0)
+		return (0);
+	else
+		return (1);
+}
+
+int		brute_force_valid(int **arr, int startingpos[2], int size)
+{
+	int row;
+	int col;
+
+	row = startingpos[0];
+	col = startingpos[1];
+	if (size == 1)
+	{
+		if (arr[row][col] == 0)
+			return (1);
+		else
+			return (0);
+	}
+	while (row < startingpos[0] + size)
+	{
+		col = startingpos[1];
+		while (col < startingpos[1] + size)
+		{
+			if (arr[row][col] != 0)
+				return (0);
+			col++;
+		}
+		row++;
+	}
+	return (1);
 }
