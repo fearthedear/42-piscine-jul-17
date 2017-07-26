@@ -14,9 +14,10 @@
 
 void	get_information(char *str)
 {
-	int i;
-	int j;
-	char *new_str;
+	int 	i;
+	int 	j;
+	char 	*new_str;
+    int     **tab;
 
 	i = 0;
 	j = 0;
@@ -24,6 +25,7 @@ void	get_information(char *str)
 		i++;
 	new_str = (char*)malloc(sizeof(char) * i);
 	i = 0;
+	g_strlength = i;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
 	g_height = ft_atoi(str);
@@ -39,5 +41,7 @@ void	get_information(char *str)
 		i++;
 		j++;
 	}
-	make_it_numbers(new_str, g_height);
+	make_it_numbers(&tab, new_str, g_height);
+    ft_putstr("\narray with calculated numbers, passed back to get_information():\n");
+    show(tab, g_height, g_length);
 }

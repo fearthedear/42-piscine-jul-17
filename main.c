@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		//todo: read from stdin
 	}
 	//somehow get file size here and malloc appropriately
-	str = (char*)malloc(sizeof(char) * 500);
+	str = (char*)malloc(sizeof(char) * 5000);
 	while (i < argc)
 	{
 		//reset string here
@@ -41,15 +41,20 @@ int	main(int argc, char **argv)
 			buf[ret] = '\0';
 			str = ft_strcat(str, buf);
 		}
-		ft_putstr(str);
+        ft_putstr("input map is this:\n");
+        ft_putstr(str);
 		//transform str to array
+		get_information(str);
 
 		//find biggest with arr
+        ft_putstr("\ng_arr set to this:\n");
+        show(g_arr, g_height, g_length);
+		find_biggest(g_arr);
 
 
 		//print str
-		finalstring = transform_to_string(arr, pos, size);
-
+		finalstring = transform_to_string(g_pos, g_dim);
+		ft_putstr(finalstring);
 		if (close(fd) == -1)
 			ft_putstr("closing failed\n");//close failed
 		i++;

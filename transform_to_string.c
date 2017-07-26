@@ -12,23 +12,24 @@
 
 #include "bsq.h"
 
-char *transform_to_string(int arr[g_xlen][g_ylen], int pos[2], int size)
+char *transform_to_string(int pos[2], int size)
 {
     int i;
     int j;
     char *str;
 
+    str = (char*)malloc(sizeof(char) * g_strlength);
     i = 0;
     j = 0;
-    while (i < g_xlen)
+    while (i < g_height)
     {
         j = 0;
-        while (j < g_ylen)
+        while (j < g_length)
         {
             if ((i >= pos[0] && i >= pos[i] + size) && (j >= pos[1] && j <= pos[1] + size))
                 ft_strcharcat(str, g_square);
-            else if (g_orig_arr[i][j] == 1)
-                ft_strchatcat(str, g_obstacle);
+            else if (g_orig_array[i][j] == 0)
+                ft_strcharcat(str, g_obstacle);
             else
                 ft_strcharcat(str, g_empty);
         }

@@ -12,7 +12,7 @@
 
 #include "bsq.h"
 
-int		find_length(char *str, int height)
+int		find_length(char *str)
 {
 	int l;
 
@@ -81,7 +81,7 @@ void	show(int **tab, int height, int length)
 	}
 }
 
-int		**make_it_numbers(char *array, int height)
+void    make_it_numbers(int ***arr, char *array, int height)
 {
 	int **tab;
 	int i;
@@ -92,7 +92,7 @@ int		**make_it_numbers(char *array, int height)
 	i = 0;
 	k = 0;
 	tab = (int**)malloc(height * sizeof(int*));
-	length = find_length(array, height);
+	length = find_length(array);
 	while (array[i] != 0)
 	{
 		j = 0;
@@ -106,10 +106,15 @@ int		**make_it_numbers(char *array, int height)
 		k++;
 		i++;
 	}
+	ft_putstr("\n\ntransformed to binary array:\n");
 	show(tab, height, length);
 	printf("\n");
 	g_orig_array = tab;
+	ft_putstr("\n\norig array set to this\n");
+	show(g_orig_array, height, length);
 	fill(tab, height, length);
+	ft_putstr("\n\n array with calculated numbers: \n");
 	show(tab, height, length);
-	return (tab);
+    **arr = *tab;
+	//return (tab);
 }
