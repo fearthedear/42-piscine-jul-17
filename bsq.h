@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 12:19:25 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 11:33:15 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 11:36:32 by jboniwel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ int		**g_orig_array;
 char	g_empty;
 char	g_obstacle;
 char	g_square;
+
+char    *ft_strcharcat(char *s1, char s2);
+char    *transform_to_string(int arr[g_xlen][g_ylen], int pos[2], int size);
 
 #endif

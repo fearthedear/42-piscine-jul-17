@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	int		i;
 	char	buf[BUF_SIZE + 1];
 	char	*str;
+	char 	*finalstring;
 	int		ret;
 
 	i = 1;
@@ -44,6 +45,7 @@ int	main(int argc, char **argv)
 		//execute find biggest map with str
 
 		//print str
+		finalstring = transform_to_string(arr, pos, size);
 
 		if (close(fd) == -1)
 			ft_putstr("closing failed\n");//close failed
