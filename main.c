@@ -23,7 +23,7 @@ void	norme_helper2(int **tab, char *str_no_information, char *finalstring)
 	free(tab);
 }
 
-void	norme_helper(char *str, ptr head, int fd)
+void	norme_helper(char *str, t_ptr head, int fd)
 {
 	char	*str_no_information;
 	int		**tab;
@@ -46,7 +46,7 @@ void	runstdi(char ch)
 	int		fd;
 	int		i;
 	char	*str;
-	ptr		head;
+	t_ptr		head;
 	int		n;
 
 	i = 1;
@@ -68,7 +68,7 @@ void	runfiles(int argc, char **argv, int fd, int i)
 	char	buf[BUF_SIZE + 1];
 	char	*str;
 	int		ret;
-	ptr		head;
+	t_ptr		head;
 	int		n;
 
 	i = 1;

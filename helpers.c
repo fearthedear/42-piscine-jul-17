@@ -12,7 +12,7 @@
 
 #include "bsq.h"
 
-void	insert(ptr *head, char c)
+void	insert(t_ptr *head, char c)
 {
 	while (*head)
 		head = &(*head)->next;
@@ -21,7 +21,7 @@ void	insert(ptr *head, char c)
 	(*head)->next = NULL;
 }
 
-void	fill_str(ptr head, char *str)
+void	fill_str(t_ptr head, char *str)
 {
 	int i;
 
@@ -35,9 +35,9 @@ void	fill_str(ptr head, char *str)
 	str[i] = '\0';
 }
 
-void	freelist(ptr *head)
+void	freelist(t_ptr *head)
 {
-	ptr tmp;
+	t_ptr tmp;
 
 	while (*head)
 	{
