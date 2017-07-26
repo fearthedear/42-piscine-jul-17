@@ -17,7 +17,6 @@ void	get_information(char *str)
 	int 	i;
 	int 	j;
 	char 	*new_str;
-    int     **tab;
 
 	i = 0;
 	j = 0;
@@ -41,7 +40,4 @@ void	get_information(char *str)
 		i++;
 		j++;
 	}
-	make_it_numbers(&tab, new_str, g_height);
-    ft_putstr("\narray with calculated numbers, passed back to get_information():\n");
-    show(tab, g_height, g_length);
 }
