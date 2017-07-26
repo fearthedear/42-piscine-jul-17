@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 02:43:26 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 23:18:07 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 23:32:14 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,38 @@ void	norme_helper(char *str, ptr head, int fd)
 		ft_putstr("closing failed\n");
 }
 
-int		main(int argc, char **argv)
+void	runstdi(char ch)
 {
 	int		fd;
 	int		i;
+	char	*str;
+	ptr		head;
+	int		n;
+
+	i = 1;
+	fd = 0;
+	head = NULL;
+	n = 0;
+	while (read(0, &ch, 1) > 0)
+	{
+		insert(&head, ch);
+		n++;
+	}
+	str = (char*)malloc(sizeof(char) * (n + 1));
+	fill_str(head, str);
+	norme_helper(str, head, fd);
+}
+
+void	runfiles(int argc, char **argv, int fd, int i)
+{
 	char	buf[BUF_SIZE + 1];
 	char	*str;
 	int		ret;
 	ptr		head;
 	int		n;
-	char	ch;
 
 	i = 1;
 	fd = 0;
-	if (argc == 1)
-	{
-		head = NULL;
-		n = 0;
-		while (read(0, &ch, 1) > 0)
-		{
-			insert(&head, ch);
-			n++;
-		}
-		str = (char*)malloc(sizeof(char) * (n + 1));
-		fill_str(head, str);
-		norme_helper(str, head, fd);
-	}
 	while (i < argc)
 	{
 		n = 0;
@@ -84,5 +90,16 @@ int		main(int argc, char **argv)
 		norme_helper(str, head, fd);
 		i++;
 	}
+}
+
+int		main(int argc, char **argv)
+{
+	char	ch;
+
+	ch = '\0';
+	if (argc == 1)
+		runstdi(ch);
+	else
+		runfiles(argc, argv, 0, 0);
 	return (0);
 }
