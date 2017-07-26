@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 12:19:25 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 11:48:13 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 23:34:24 by jboniwel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,48 +21,48 @@
 
 # define BUF_SIZE 1
 
-typedef struct	s_node *ptr;
+typedef struct s_node *t_ptr;
 
-typedef struct	s_node
+typedef struct		s_node
 {
-    char	val;
-    ptr		next;
-}				t_node;
+	char			val;
+	t_ptr			next;
+}					t_node;
 
-int		g_height;
-int		g_length;
-char	g_empty;
-char	g_obstacle;
-char	g_square;
-int     g_dim;
-int     g_pos[2];
-int     g_strlength;
+int					g_height;
+int					g_length;
+char				g_empty;
+char				g_obstacle;
+char				g_square;
+int					g_dim;
+int					g_pos[2];
+int					g_strlength;
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void    make_it_numbers(int ***tab, char *array, int height, int fillit);
-void	show(int **tab, int height, int length);
-void	fill(int **tab, int height, int length);
-int		transform(char src);
-char	*ft_strcat(char *s1, char *s2);
-char	*get_information(char *str);
-int		ft_atoi(char *str);
-void	find_biggest(int **arr, char *str);
-char    *ft_strcharcat(char *s1, char s2);
-char    *transform_to_string(int **tab, int pos[2], int size);
-int     ft_strlen(char *str);
-int     ft_strcmp(char *s1, char *s2);
-void	insert(ptr *head, char c);
-void    fill_str(ptr head, char *str);
-void    freelist(ptr *head);
-int		is_valid(int **arr, int startingpos[2], int size);
-int		brute_force_valid(int **arr, int startingpos[2], int size);
+void				ft_putchar(char c);
+void				ft_putstr(char *str);
+void				make_it_numbers(int ***tab, char *array,
+		int height, int fillit);
+void				show(int **tab, int height, int length);
+void				fill(int **tab, int height, int length);
+int					transform(char src);
+char				*ft_strcat(char *s1, char *s2);
+char				*get_information(char *str);
+int					ft_atoi(char *str);
+void				find_biggest(int **arr, char *str);
+char				*ft_strcharcat(char *s1, char s2);
+char				*transform_to_string(int **tab, int pos[2], int size);
+int					ft_strlen(char *str);
+int					ft_strcmp(char *s1, char *s2);
+void				insert(t_ptr *head, char c);
+void				fill_str(t_ptr head, char *str);
+void				freelist(t_ptr *head);
+int					is_valid(int **arr, int startingpos[2], int size);
+int					brute_force_valid(int **arr, int startingpos[2], int size);
 
-
-typedef struct  s_list
+typedef struct		s_list
 {
-    struct s_list *next;
-    void *data;
-}               t_list;
+	struct s_list	*next;
+	void			*data;
+}					t_list;
 
 #endif
