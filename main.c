@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
         {
             make_it_numbers(&tab, str_no_information, g_height, 1);
             //find biggest with arr
-            find_biggest(tab);
+            find_biggest(tab, str_no_information);
 
             //print str
 			//get original string with 0+1
