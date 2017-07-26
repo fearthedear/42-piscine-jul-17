@@ -30,7 +30,7 @@ int		transform(char src);
 char	*ft_strcat(char *s1, char *s2);
 char	*get_information(char *str);
 int		ft_atoi(char *str);
-void	find_biggest(int **arr);
+void	find_biggest(int **arr, char *str);
 char    *ft_strcharcat(char *s1, char s2);
 char    *transform_to_string(int **tab, int pos[2], int size);
 int     ft_strlen(char *str);
