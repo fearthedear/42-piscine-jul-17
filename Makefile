@@ -14,7 +14,7 @@ NAME = bsq
 
 FLAGS = -Werror -Wall -Wextra
 
-SRC = transform_array.c main.c find_biggest.c transform_to_string.c read_str.c helpers.c
+SRC = transformarray.c main.c find_biggest.c transform_to_string.c read_str.c helpers.c
 
 HEADER = bsq.h
 

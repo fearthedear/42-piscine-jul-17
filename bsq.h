@@ -43,7 +43,7 @@ void				ft_putstr(char *str);
 void				make_it_numbers(int ***tab, char *array,
 		int height, int fillit);
 void				show(int **tab, int height, int length);
-void				fill(int **tab, int height, int length);
+void				fill(int **tab, int height, int length, int i, int j)
 int					transform(char src);
 char				*ft_strcat(char *s1, char *s2);
 char				*get_information(char *str);
