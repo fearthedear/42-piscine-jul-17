@@ -6,7 +6,7 @@
 /*   By: jboniwel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:58:54 by jboniwel          #+#    #+#             */
-/*   Updated: 2017/07/26 10:45:38 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 18:34:57 by jboniwel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,16 @@ void	show(int **tab, int height, int length)
 	}
 }
 
-void    make_it_numbers(int ***tab, char *array, int height, int fillit)
+void	make_it_numbers(int ***tab, char *array, int height, int fillit)
 {
 	int i;
 	int j;
 	int k;
-    int **arr;
+	int **arr;
 
 	i = 0;
 	k = 0;
 	arr = (int**)malloc(sizeof(int*) * height);
-
 	while (array[i] != 0)
 	{
 		j = 0;
@@ -97,6 +96,5 @@ void    make_it_numbers(int ***tab, char *array, int height, int fillit)
 	}
 	if (fillit)
 		fill(arr, height, g_length);
-
-    *tab = arr;
+	*tab = arr;
 }
