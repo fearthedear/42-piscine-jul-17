@@ -36,15 +36,19 @@ char    *transform_to_string(int **tab, int pos[2], int size);
 int     ft_strlen(char *str);
 int     ft_strcmp(char *s1, char *s2);
 
-int     **g_arr;
 int		g_height;
 int		g_length;
-int		**g_orig_array;
 char	g_empty;
 char	g_obstacle;
 char	g_square;
 int     g_dim;
 int     g_pos[2];
 int     g_strlength;
+
+typedef struct  s_list
+{
+    struct s_list *next;
+    void *data;
+}               t_list;
 
 #endif

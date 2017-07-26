@@ -29,10 +29,9 @@ int	main(int argc, char **argv)
 	{
 		//todo: read from stdin
 	}
-	//somehow get file size here and malloc appropriately
-	str = (char*)malloc(sizeof(char) * 5000);
 	while (i < argc)
 	{
+		str = (char*)malloc(sizeof(char) * 5000);
 		//reset string here
 		fd = open(argv[i], O_RDONLY);
 		if (fd == -1)
@@ -45,24 +44,20 @@ int	main(int argc, char **argv)
 		}
         ft_putstr("input map is this:\n");
         ft_putstr(str);
-
-        //transform str to array
         str_no_information = (char*)malloc(sizeof(char) * ft_strlen(str));
         str_no_information = get_information(str);
+		str[0] = '\0';
         if (ft_strcmp(str_no_information, "error") != 0)
         {
             make_it_numbers(&tab, str_no_information, g_height, 1);
-            //find biggest with arr
             find_biggest(tab, str_no_information);
-
-            //print str
-			//get original string with 0+1
 			free(tab);
 			make_it_numbers(&tab, str_no_information, g_height, 0);
             finalstring = transform_to_string(tab, g_pos, g_dim);
             ft_putstr(finalstring);
 			free(tab);
         }
+//		free(str_no_information);
         if (close(fd) == -1)
             ft_putstr("closing failed\n");//close failed
 		i++;
