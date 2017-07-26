@@ -6,7 +6,7 @@
 /*   By: jboniwel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:58:54 by jboniwel          #+#    #+#             */
-/*   Updated: 2017/07/26 10:14:38 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 10:45:38 by jboniwel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		find_length(char *str, int height)
 
 int		transform(char src)
 {
-	if (src == '.')
+	if (src == g_obstacle)
 		return (0);
 	else
 		return (1);
@@ -108,6 +108,7 @@ int		**make_it_numbers(char *array, int height)
 	}
 	show(tab, height, length);
 	printf("\n");
+	g_orig_array = tab;
 	fill(tab, height, length);
 	show(tab, height, length);
 	return (tab);

@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 12:19:25 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 11:36:32 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 11:48:13 by jboniwel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		transform(char src);
 int		find_length(char *str, int height);
 char	*ft_strcat(char *s1, char *s2);
 void	get_information(char *str);
+int		ft_atoi(char *str);
 
 int		g_height;
 int		g_length;
