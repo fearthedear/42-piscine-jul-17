@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 12:19:25 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 23:34:24 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 23:46:22 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int					g_strlength;
 void				ft_putchar(char c);
 void				ft_putstr(char *str);
 void				make_it_numbers(int ***tab, char *array,
-		int height, int fillit);
+	int height, int fillit);
 void				show(int **tab, int height, int length);
-void				fill(int **tab, int height, int length, int i, int j)
+void				fill(int **tab, int height, int length, int i, int j);
 int					transform(char src);
 char				*ft_strcat(char *s1, char *s2);
 char				*get_information(char *str);
@@ -58,11 +58,5 @@ void				fill_str(t_ptr head, char *str);
 void				freelist(t_ptr *head);
 int					is_valid(int **arr, int startingpos[2], int size);
 int					brute_force_valid(int **arr, int startingpos[2], int size);
-
-typedef struct		s_list
-{
-	struct s_list	*next;
-	void			*data;
-}					t_list;
 
 #endif

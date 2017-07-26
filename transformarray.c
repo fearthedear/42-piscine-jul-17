@@ -6,7 +6,7 @@
 /*   By: jboniwel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:58:54 by jboniwel          #+#    #+#             */
-/*   Updated: 2017/07/26 18:34:57 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 23:53:51 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,9 @@ void	make_it_numbers(int ***tab, char *array, int height, int fillit)
 	if (fillit)
 		fill(arr, height, g_length, 0, 1);
 	*tab = arr;
+}
+
+int main()
+{
+	return (0);
 }

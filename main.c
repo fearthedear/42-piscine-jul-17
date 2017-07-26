@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 02:43:26 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 23:32:14 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/26 23:44:20 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	runstdi(char ch)
 	int		fd;
 	int		i;
 	char	*str;
-	t_ptr		head;
+	t_ptr	head;
 	int		n;
 
 	i = 1;
@@ -68,7 +68,7 @@ void	runfiles(int argc, char **argv, int fd, int i)
 	char	buf[BUF_SIZE + 1];
 	char	*str;
 	int		ret;
-	t_ptr		head;
+	t_ptr	head;
 	int		n;
 
 	i = 1;
