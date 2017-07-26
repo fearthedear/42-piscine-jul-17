@@ -30,6 +30,6 @@ int		transform(char src);
 int		find_length(char *str, int height);
 char	*ft_strcat(char *s1, char *s2);
 char    *ft_strcharcat(char *s1, char s2);
-char    *transform_to_string(int arr[g_xlen][g_ylen], int pos[2], int size);
+char    *transform_to_string(int arr[g_height][g_width], int pos[2], int size);
 
 #endif
