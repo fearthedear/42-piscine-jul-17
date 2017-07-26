@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 02:43:26 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 03:27:02 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/26 10:10:05 by lkinzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	while (i < argc)
 	{
 		//reset string here
-		fd = open(argv[i], O_RDONLY);//might need these flagsO_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+		fd = open(argv[i], O_RDONLY);
 		if (fd == -1)
 			ft_putstr("opening file failed\n");//display error, open failed
 		//read file
@@ -43,9 +43,8 @@ int	main(int argc, char **argv)
 		ft_putstr(str);
 		//execute find biggest map with str
 
-		//write result into file, the returned str
+		//print str
 
-		//print file
 		if (close(fd) == -1)
 			ft_putstr("closing failed\n");//close failed
 		i++;
