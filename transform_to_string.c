@@ -26,7 +26,7 @@ char *transform_to_string(int **tab, int pos[2], int size)
         j = 0;
         while (j < g_length)
         {
-            if ((i >= pos[0] && i >= pos[i] + size) && (j >= pos[1] && j <= pos[1] + size))
+            if ((i >= pos[0] && i < pos[0] + size) && (j >= pos[1] && j < pos[1] + size))
                 ft_strcharcat(str, g_square);
             else if (tab[i][j] == 1)
                 ft_strcharcat(str, g_obstacle);

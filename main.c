@@ -53,8 +53,6 @@ int	main(int argc, char **argv)
         {
             make_it_numbers(&tab, str_no_information, g_height, 1);
             //find biggest with arr
-            ft_putstr("\nhere the array passed back to main: \n");
-            show(tab, g_height, g_length);
             find_biggest(tab);
 
             //print str
@@ -63,6 +61,7 @@ int	main(int argc, char **argv)
 			make_it_numbers(&tab, str_no_information, g_height, 0);
             finalstring = transform_to_string(tab, g_pos, g_dim);
             ft_putstr(finalstring);
+			free(tab);
         }
         if (close(fd) == -1)
             ft_putstr("closing failed\n");//close failed
