@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
     char    *str_no_information;
 	char 	*finalstring;
 	int		ret;
-    int     **tab;
+	int 	**tab;
 
 	i = 1;
 
@@ -51,17 +51,17 @@ int	main(int argc, char **argv)
         str_no_information = get_information(str);
         if (ft_strcmp(str_no_information, "error") != 0)
         {
-            make_it_numbers(&tab, str_no_information, g_height);
-            ft_putstr("\narray with calculated numbers, passed back to get_information():\n");
-            show(tab, g_height, g_length);
+            make_it_numbers(&tab, str_no_information, g_height, 1);
             //find biggest with arr
-            ft_putstr("\ng_arr set to this:\n");
-            show(g_arr, g_height, g_length);
-            find_biggest(g_arr);
-
+            ft_putstr("\nhere the array passed back to main: \n");
+            show(tab, g_height, g_length);
+            find_biggest(tab);
 
             //print str
-            finalstring = transform_to_string(g_pos, g_dim);
+			//get original string with 0+1
+			free(tab);
+			make_it_numbers(&tab, str_no_information, g_height, 0);
+            finalstring = transform_to_string(tab, g_pos, g_dim);
             ft_putstr(finalstring);
         }
         if (close(fd) == -1)

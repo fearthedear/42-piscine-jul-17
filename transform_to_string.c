@@ -12,7 +12,7 @@
 
 #include "bsq.h"
 
-char *transform_to_string(int pos[2], int size)
+char *transform_to_string(int **tab, int pos[2], int size)
 {
     int i;
     int j;
@@ -28,13 +28,15 @@ char *transform_to_string(int pos[2], int size)
         {
             if ((i >= pos[0] && i >= pos[i] + size) && (j >= pos[1] && j <= pos[1] + size))
                 ft_strcharcat(str, g_square);
-            else if (g_orig_array[i][j] == 0)
+            else if (tab[i][j] == 1)
                 ft_strcharcat(str, g_obstacle);
             else
                 ft_strcharcat(str, g_empty);
+            j++;
         }
         ft_strcharcat(str, '\n');
         i++;
     }
+    ft_strcharcat(str, '\0');
     return (str);
 }

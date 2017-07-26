@@ -29,9 +29,10 @@ int		check(char *str)
 			return (0);
 		if (str[i] == '\n')
 			count_returns++;
-		if (count_returns != g_height)
-			return (0);
+        i++;
 	}
+    if (count_returns != g_height)
+        return (0);
 	i = 0;
 	while (str[i] != '\n')
 	{
@@ -61,11 +62,8 @@ char	*get_information(char *str)
 
 	i = 0;
 	j = 0;
-	while (str[i] != 0)
-		i++;
-	new_str = (char*)malloc(sizeof(char) * i);
+	new_str = (char*)malloc(sizeof(char) * ft_strlen(str));
 	i = 0;
-	g_strlength = i;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
 	g_height = ft_atoi(str);
@@ -81,11 +79,14 @@ char	*get_information(char *str)
 		i++;
 		j++;
 	}
+	while (new_str[g_length] != '\n')
+		g_length++;
+    new_str[j] = 0;
 	if (check(new_str) == 0)
-		{
-			ft_putstr("map error\n");
-            return ("error");
-		}
+    {
+        ft_putstr("map error\n");
+        return ("error");
+    }
 	else
     {
         return (new_str);

@@ -12,22 +12,12 @@
 
 #include "bsq.h"
 
-int		find_length(char *str)
-{
-	int l;
-
-	l = 0;
-	while (str[l] != '\n')
-		l++;
-	return (l);
-}
-
 int		transform(char src)
 {
 	if (src == g_obstacle)
-		return (0);
-	else
 		return (1);
+	else
+		return (0);
 }
 
 void	fill(int **tab, int height, int length)
@@ -81,38 +71,32 @@ void	show(int **tab, int height, int length)
 	}
 }
 
-void    make_it_numbers(int ***tab, char *array, int height)
+void    make_it_numbers(int ***tab, char *array, int height, int fillit)
 {
 	int i;
 	int j;
 	int k;
-	int length;
+    int **arr;
 
 	i = 0;
 	k = 0;
-	*tab = (int**)malloc(height * sizeof(int*));
-	length = find_length(array);
+	arr = (int**)malloc(sizeof(int*) * height);
+
 	while (array[i] != 0)
 	{
 		j = 0;
-		*tab[k] = (int*)malloc(length * sizeof(int));
+		arr[k] = (int*)malloc(g_length * sizeof(int));
 		while (array[i] != '\n')
 		{
-			*tab[k][j] = transform(array[i]);
+			arr[k][j] = transform(array[i]);
 			i++;
 			j++;
 		}
 		k++;
 		i++;
 	}
-	ft_putstr("\n\ntransformed to binary array:\n");
-	show(*tab, height, length);
-	printf("\n");
-	g_orig_array = *tab;
-	ft_putstr("\n\norig array set to this\n");
-	show(g_orig_array, height, length);
-	fill(*tab, height, length);
-	ft_putstr("\n\n array with calculated numbers: \n");
-	show(*tab, height, length);
-	//return (tab);
+	if (fillit)
+		fill(arr, height, g_length);
+
+    *tab = arr;
 }
