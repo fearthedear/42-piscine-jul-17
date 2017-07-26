@@ -6,7 +6,7 @@
 /*   By: jboniwel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 02:15:27 by jboniwel          #+#    #+#             */
-/*   Updated: 2017/07/26 02:33:47 by jboniwel         ###   ########.fr       */
+/*   Updated: 2017/07/26 10:04:52 by jboniwel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 int		main()
 {
-	char	str[] = "....x\n..x..\n.x.x.\n...x.\n.x...\n";
+	char	str[] = "....x...x.\n..x...x.x.\n.x.x......\n...x.xx...\n.x.....xx.\n";
 	int		**tab;
 
 	tab = make_it_numbers(str, 5);
-	show(tab, 5);
-	printf("\n");
-	fill(tab, 5);
-	show(tab, 5);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lkinzel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 12:19:25 by lkinzel           #+#    #+#             */
-/*   Updated: 2017/07/26 03:14:55 by lkinzel          ###   ########.fr       */
+/*   Updated: 2017/07/26 10:08:42 by jboniwel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 int		**make_it_numbers(char *array, int height);
-void	show(int **tab, int height);
-void	fill(int **tab, int height);
+void	show(int **tab, int height, int length);
+void	fill(int **tab, int height, int length);
 int		transform(char src);
-int		array_is_valid(char *str);
+int		find_length(char *str, int height);
 char	*ft_strcat(char *s1, char *s2);
 
 #endif
