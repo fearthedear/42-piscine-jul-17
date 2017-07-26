@@ -23,17 +23,19 @@
 
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
-void	make_it_numbers(int ***arr, char *array, int height);
+void	make_it_numbers(int ***tab, char *array, int height);
 void	show(int **tab, int height, int length);
 void	fill(int **tab, int height, int length);
 int		transform(char src);
 int		find_length(char *str);
 char	*ft_strcat(char *s1, char *s2);
-void	get_information(char *str);
+char	*get_information(char *str);
 int		ft_atoi(char *str);
 void	find_biggest(int **arr);
 char    *ft_strcharcat(char *s1, char s2);
 char    *transform_to_string(int pos[2], int size);
+int     ft_strlen(char *str);
+int     ft_strcmp(char *s1, char *s2);
 
 int     **g_arr;
 int		g_height;

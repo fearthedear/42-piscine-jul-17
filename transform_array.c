@@ -81,9 +81,8 @@ void	show(int **tab, int height, int length)
 	}
 }
 
-void    make_it_numbers(int ***arr, char *array, int height)
+void    make_it_numbers(int ***tab, char *array, int height)
 {
-	int **tab;
 	int i;
 	int j;
 	int k;
@@ -91,15 +90,15 @@ void    make_it_numbers(int ***arr, char *array, int height)
 
 	i = 0;
 	k = 0;
-	tab = (int**)malloc(height * sizeof(int*));
+	*tab = (int**)malloc(height * sizeof(int*));
 	length = find_length(array);
 	while (array[i] != 0)
 	{
 		j = 0;
-		tab[k] = (int*)malloc(length * sizeof(int));
+		*tab[k] = (int*)malloc(length * sizeof(int));
 		while (array[i] != '\n')
 		{
-			tab[k][j] = transform(array[i]);
+			*tab[k][j] = transform(array[i]);
 			i++;
 			j++;
 		}
@@ -107,14 +106,13 @@ void    make_it_numbers(int ***arr, char *array, int height)
 		i++;
 	}
 	ft_putstr("\n\ntransformed to binary array:\n");
-	show(tab, height, length);
+	show(*tab, height, length);
 	printf("\n");
-	g_orig_array = tab;
+	g_orig_array = *tab;
 	ft_putstr("\n\norig array set to this\n");
 	show(g_orig_array, height, length);
-	fill(tab, height, length);
+	fill(*tab, height, length);
 	ft_putstr("\n\n array with calculated numbers: \n");
-	show(tab, height, length);
-    **arr = *tab;
+	show(*tab, height, length);
 	//return (tab);
 }
