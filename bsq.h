@@ -40,6 +40,6 @@ char	g_obstacle;
 char	g_square;
 
 char    *ft_strcharcat(char *s1, char s2);
-char    *transform_to_string(int arr[g_xlen][g_ylen], int pos[2], int size);
+char    *transform_to_string(int arr[g_height][g_length], int pos[2], int size);
 
 #endif

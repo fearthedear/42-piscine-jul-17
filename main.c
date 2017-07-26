@@ -42,7 +42,10 @@ int	main(int argc, char **argv)
 			str = ft_strcat(str, buf);
 		}
 		ft_putstr(str);
-		//execute find biggest map with str
+		//transform str to array
+
+		//find biggest with arr
+
 
 		//print str
 		finalstring = transform_to_string(arr, pos, size);
